@@ -14,9 +14,9 @@ Files in this repository
 	- Input file: MetaAnalysisFiles.RData
 	- Input file: plob_iso2gene.tab
 	
-	-Output file: hostVSDandPVALS_no_g4_deseq1_4jun_plusPC1.csv
-	-Output file: GOpatchHost.csv
-	-Output file: GObinaryHostPatch.csv
-	-Output file: VSDs_GObinaryHostPatch.csv
+	- Output file: hostVSDandPVALS_no_g4_deseq1_4jun_plusPC1.csv
+	- Output file: GOpatchHost.csv
+	- Output file: GObinaryHostPatch.csv
+	- Output file: VSDs_GObinaryHostPatch.csv
 
 3. For gene ontology enrichment scripts and example input files, please visit https://github.com/ckenkel/GO_MWU
