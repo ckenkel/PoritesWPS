@@ -4,10 +4,10 @@ global gene expression patterns in WPS affected tissues
 Files in this repository 
 -----------
 
-1. Analyses_final.R: R script for plotting physiological data and generating linear mixed models 
+1. Analyses_final.R: Annotated R script for plotting physiological data and generating linear mixed models 
 	- Input file: Patchy_Porites_Feb2019_for_R.csv
 	
-2. DESeq_PoritesPatch.R: R script for conducting differential gene expression analysis and KOG term enrichments
+2. DESeq_PoritesPatch.R: Annotated R script for conducting differential gene expression analysis and KOG term enrichments
 	- Input file: AllCountsHost.txt
 	- Input file: plob_iso2kogClassNR.tab
 	- Input file: amil_iso2kogClassNR.tab
