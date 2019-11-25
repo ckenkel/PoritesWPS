@@ -5,7 +5,7 @@ Files in this repository
 -----------
 
 1. Analyses_final.R: Annotated R script for plotting physiological data and generating linear mixed models 
-	- Input file: Patchy_Porites_Feb2019_for_R.csv
+	- Input file: Patchy_Porites_July2019_for_R.csv
 	
 2. DESeq_PoritesPatch.R: Annotated R script for conducting differential gene expression analysis and KOG term enrichments
 	- Input file: AllCountsHost.txt
