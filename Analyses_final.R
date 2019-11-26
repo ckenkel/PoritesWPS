@@ -47,7 +47,7 @@ p5<-ggplot(dat,aes(factor(condition),daycal_CaCO3.cm2.min,fill=condition))+
 	geom_boxplot(outlier.shape=16, notch=FALSE)+
 	geom_point(aes(colour=factor(sid)),position=pd)+
 	geom_line(aes(group=factor(sid),colour=factor(sid)),position=pd)+
-	labs(colour="genet")+
+	labs(colour="colony")+
 	#scale_colour_manual(values=c(point="gray60"))+
 	labs(subtitle="Calcification",y=expression(CaCO["3"]/cm["2"]/min))+
 	xlab(NULL)+
@@ -74,7 +74,7 @@ p2<-ggplot(dat,aes(factor(condition),chla_ug.cm2,fill=condition))+
 	geom_boxplot(outlier.shape=16, notch=FALSE)+
 	geom_point(aes(colour=factor(sid)),position=pd,show.legend=FALSE)+
 	geom_line(aes(group=factor(sid),colour=factor(sid)),position=pd,show.legend=FALSE)+
-	labs(colour="genet")+
+	labs(colour="colony")+
 	#scale_colour_manual(values=c(point="gray60"))+
 	labs(subtitle="Chlorophyll a", y=expression(ug/cm["2"]))+
 	xlab(NULL)+
@@ -88,7 +88,7 @@ p3<-ggplot(dat,aes(factor(condition),PR,fill=condition))+
 	geom_boxplot(outlier.shape=16, notch=FALSE)+
 	geom_point(aes(colour=factor(sid)),position=pd,show.legend=FALSE)+
 	geom_line(aes(group=factor(sid),colour=factor(sid)),position=pd,show.legend=FALSE)+
-	labs(colour="genet")+
+	labs(colour="colony")+
 	#scale_colour_manual(values=c(point="gray60"))+
 	labs(subtitle="Holobiont Productivity", y="P:R")+ #expression(mgO["2"]/cm["2"]/min)
 	xlab(NULL)+
@@ -102,7 +102,7 @@ p4<-ggplot(dat,aes(factor(condition),protein_mg.cm2,fill=condition))+
 	geom_boxplot(outlier.shape=16, notch=FALSE)+
 	geom_point(aes(colour=factor(sid)),position=pd,show.legend=FALSE)+
 	geom_line(aes(group=factor(sid),colour=factor(sid)),position=pd,show.legend=FALSE)+
-	labs(colour="genet")+
+	labs(colour="colony")+
 	#scale_colour_manual(values=c(point="gray60"))+
 	labs(subtitle="Soluble Protein",y=expression(mg/cm["2"]))+
 	xlab(NULL)+

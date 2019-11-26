@@ -776,7 +776,7 @@ isogroup133095_g1,0
 isogroup13311_g1,0
 isogroup133133_g1,0
 isogroup133141_g1,1
-isogroup133145_g1,0
+isogroup133145_g1,1
 isogroup13320_g1,0
 isogroup133342_g1,0
 isogroup13334_g1,0
@@ -826,7 +826,7 @@ isogroup13437_g1,0
 isogroup134407_g1,0
 isogroup134420_g1,0
 isogroup13451_g1,0
-isogroup13451_g2,0
+isogroup13451_g2,1
 isogroup134532_g1,0
 isogroup134539_g1,0
 isogroup134544_g1,0
@@ -2646,7 +2646,7 @@ isogroup20372_g1,0
 isogroup20375_g1,0
 isogroup20382_g1,0
 isogroup20383_g1,0
-isogroup20386_g1,0
+isogroup20386_g1,1
 isogroup20386_g2,0
 isogroup20415_g1,0
 isogroup20437_g1,0
@@ -5288,7 +5288,7 @@ isogroup40879_g1,0
 isogroup40885_g1,0
 isogroup4088_g1,0
 isogroup40894_g1,0
-isogroup40897_g1,1
+isogroup40897_g1,0
 isogroup408_g1,0
 isogroup40901_g1,0
 isogroup40903_g1,0
@@ -6766,7 +6766,7 @@ isogroup45993_g2,0
 isogroup45994_g1,0
 isogroup45997_g1,1
 isogroup45999_g1,0
-isogroup45999_g2,0
+isogroup45999_g2,1
 isogroup46000_g1,0
 isogroup46001_g1,0
 isogroup46003_g1,0
@@ -7670,7 +7670,7 @@ isogroup48241_g1,0
 isogroup48242_g1,0
 isogroup48243_g1,0
 isogroup48245_g1,0
-isogroup48246_g1,0
+isogroup48246_g1,1
 isogroup48249_g1,0
 isogroup48251_g1,0
 isogroup48252_g1,0
@@ -7761,7 +7761,7 @@ isogroup48440_g1,0
 isogroup48441_g1,0
 isogroup48443_g1,0
 isogroup48446_g1,0
-isogroup48446_g2,0
+isogroup48446_g2,1
 isogroup48452_g2,0
 isogroup48454_g1,0
 isogroup48455_g1,0
@@ -9053,7 +9053,7 @@ isogroup50880_g1,0
 isogroup50881_g1,1
 isogroup50885_g1,0
 isogroup50886_g1,0
-isogroup50887_g1,0
+isogroup50887_g1,1
 isogroup50889_g1,0
 isogroup50890_g1,0
 isogroup50892_g1,0
@@ -11838,7 +11838,7 @@ isogroup54884_g2,0
 isogroup54886_g1,0
 isogroup54887_g1,0
 isogroup54889_g2,0
-isogroup54890_g1,0
+isogroup54890_g1,1
 isogroup54891_g1,0
 isogroup54892_g1,0
 isogroup54893_g1,0
@@ -15673,7 +15673,7 @@ isogroup58804_g1,0
 isogroup58804_g2,0
 isogroup58806_g1,0
 isogroup58807_g1,0
-isogroup58808_g1,0
+isogroup58808_g1,1
 isogroup58810_g1,0
 isogroup58810_g2,0
 isogroup58810_g3,0
@@ -18182,7 +18182,7 @@ isogroup60685_g2,0
 isogroup60686_g1,0
 isogroup60686_g2,0
 isogroup60687_g3,0
-isogroup60688_g3,0
+isogroup60688_g3,1
 isogroup60689_g2,0
 isogroup60691_g1,0
 isogroup60692_g1,0
@@ -19408,7 +19408,7 @@ isogroup61588_g2,0
 isogroup61589_g1,0
 isogroup61590_g1,0
 isogroup61590_g2,0
-isogroup61591_g1,0
+isogroup61591_g1,1
 isogroup61592_g1,0
 isogroup61592_g2,1
 isogroup61592_g3,0

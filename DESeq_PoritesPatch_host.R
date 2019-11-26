@@ -46,7 +46,7 @@ patch=c(1:length(names(counts)))
 patch[grep("B",names(counts))]="Patch"
 patch[grep("N",names(counts))]="Normal"
 geno=c("X1","X1","X2","X2","X3","X3","X4","X4","X5","X5","X6","X6","X7","X7","X8","X8")
-pc1=c("-0.8745566","0.3957006","-1.1903046","2.8307584","-1.6972843","1.9503512","-1.9548308","1.7646005","-1.8041639","0.7985436","-0.9543884","3.5344855","-1.7413601","0.3277427","-1.8828452","0.4975513")
+pc1=c("-0.8124053","0.5453924","-1.1648184","2.1470713","-1.7253080","1.6423298","-2.0302205","2.0870363","-1.8561130","1.0733427","-1.1447046","3.2252090","-1.8057462","0.9728188","-1.6738579","0.5199737")
 
 
 conditions=data.frame(patch,geno,pc1)
@@ -113,7 +113,7 @@ pvals.pg<-nbinomGLMTest(fit3,fit1) #testing significance of patch on top of geno
 pvals.pc1<-nbinomGLMTest(fit4,fit1) #testing significance of patch on top of gen
 
 
-pvalue=pvals.pc1 #change to each type of pval: i, t and o
+pvalue=pvals.p #change to each type of pval: i, t and o
 theta=seq(from=0,to=0.8,by=0.02)
 
 filterChoices=data.frame(`mean`=rowMeans(counts(real)),`median`=apply((counts(real)),1,median),`min`=rowMin(counts(real)),`max`=rowMax(counts(real)),`sd`=rowSds(counts(real)))
@@ -157,27 +157,27 @@ pvals.p<-nbinomGLMTest(fit3,fit1) #testing significance of patch, after accounti
 pvals.g<-nbinomGLMTest(fit1,fit0) #testing significance of genotype
 pvals.pc1<-nbinomGLMTest(fit4,fit1) #testing significance of pc1
 
-#making non-convergent model p-values NA's - only occur in pvals.p
+#making non-convergent model p-values NA's
 pvals.p=data.frame(pvals.p)
 rownames(fit3)->rownames(pvals.p)
-badmods=subset(fit3,(!fit3[,11]))
+badmods=subset(fit3,(!fit3[,10]))
 for ( i in rownames(badmods)){pvals.p[i,1]<-NA}
-
-
 summary(pvals.p)
+
 
 pvals.g=data.frame(pvals.g)
 rownames(fit1)->rownames(pvals.g)
-badmods=subset(fit1,(!fit1[,10]))
+badmods=subset(fit1,(!fit1[,9]))
 for ( i in rownames(badmods)){pvals.g[i,1]<-NA}
-
+#add in two additional rows that did not converge in fit0
+for ( i in c("isogroup49089_g3","isogroup5984_g1")){pvals.g[i,1]<-NA}
 summary(pvals.g)
+
 
 pvals.pc1=data.frame(pvals.pc1)
 rownames(fit4)->rownames(pvals.pc1)
 badmods=subset(fit4,(!fit4[,24])) #18
 for ( i in rownames(badmods)){pvals.pc1[i,1]<-NA}
-
 summary(pvals.pc1)
 
 #multiple test correction - adjust p-values using Benjamini-Hochburg
@@ -214,7 +214,8 @@ rownames(d2)<-d2$X
 
 head(d2)
 
-summary(d2) #22630 genes host
+summary(d2) 
+nrow(d2)#22630 genes host
 
 d2_cc<-d2[!is.na(d2$adjp.p),] #22630 genes host
 
@@ -222,17 +223,15 @@ d2_cc<-d2[!is.na(d2$adjp.p),] #22630 genes host
 
 GEs<-d2 #rename the dataset
 
+topnum=2000
+
 patch=head(GEs[order(GEs$adjp.p),],topnum)
 geno=head(GEs[order(GEs$adjp.g),],topnum)
 sig=data.frame(rbind(patch[!(patch$X %in% geno$X),],geno)) #remove redundant isogroups that are sig for both
 length(sig[,1]) 
 
-#Host #Top 100 (197 non-overlapping); 500 (957); 1000 (1889); 2000 (3643)
+#Host #Top 500 (197 non-overlapping); 500 (957); 1000 (1889); 2000 (3643)
 
-
-#Transpose expression values only SYM
-tsig=t(sig[,2:13]) 
-tsig[1:12,1:5]
 
 #Transpose expression values only HOST
 tsig=t(sig[,2:15]) 
@@ -257,7 +256,7 @@ scores[,1:2]
 #par(mfrow=c(1,4))
 
 #FOR HOSTS
-plot(scores[,1], scores[,2], xlab="PCA 1", ylab="PCA 2",type="n",main="Patch/Geno Top 500")
+plot(scores[,1], scores[,2], xlab="PCA 1", ylab="PCA 2",type="n",main="Patch/Geno Top 2000")
 points(scores[c(1,3,5,7,9,11,13),1],scores[c(1,3,5,7,9,11,13),2],pch=1,col="lightgreen")
 points(scores[c(2,4,6,8,10,12,14),1],scores[c(2,4,6,8,10,12,14),2],pch=19,col="darkgreen")
 
@@ -304,7 +303,7 @@ VSDsigOnly<-d2[d2$binary==1,]
 nrow(VSDsigOnly)
 head(VSDsigOnly)
 VSDsigOnly$direction=as.factor(VSDsigOnly$direction)
-summary(VSDsigOnly) #For genes sig by patch in host, 320 downregulated, 255 upregulated out of 575
+summary(VSDsigOnly) #For genes sig by patch in host, 323 downregulated, 262 upregulated out of 585
 #For genes sig in sym, 4097 downregulated, 133 upregulated...not all downregulated, but still most of DE could be due to bleaching?
 
 write.csv(VSDsigOnly,file="VSDs_GObinaryHostPatch.csv",quote=F,row.names=F)
@@ -365,17 +364,17 @@ host_kog_mwu
 
 #Sig terms for WPS
                                                             # term nseqs delta.rank         pval         padj
-# 10                              Energy production and conversion   289      -1254 1.538142e-12 3.537726e-11
-# 7                                                   Cytoskeleton   387        694 6.539071e-06 7.519931e-05
-# 6                                RNA processing and modification   451        509 3.702805e-04 2.838817e-03
-# 13    Cell cycle control, cell division, chromosome partitioning   181        700 1.686444e-03 9.697053e-03
-# 9                Translation, ribosomal structure and biogenesis   370        443 4.845646e-03 2.228997e-02
-# 19                              Chromatin structure and dynamics   121        698 1.021416e-02 3.915430e-02
+# 9                               Energy production and conversion   288      -1234 1.708260e-12 3.928998e-11
+# 6                                                   Cytoskeleton   381        681 8.090844e-06 9.304471e-05
+# 11                               RNA processing and modification   446        495 4.737496e-04 3.632080e-03
+# 13    Cell cycle control, cell division, chromosome partitioning   178        685 1.942126e-03 1.116723e-02
+# 8                Translation, ribosomal structure and biogenesis   366        449 3.920695e-03 1.803520e-02
+# 19                              Chromatin structure and dynamics   120        699 9.209224e-03 3.530203e-02
 
 #Try comparisson with short-term heat-stress induced bleaching
 data(adults.3dHeat.logFoldChange)
 data(larvae.longTerm)
-gene2kog<-read.table("ComparativeGEstudies/amil_iso2kogClassNR.tab",sep="\t")
+gene2kog<-read.table("amil_iso2kogClassNR.tab",sep="\t")
 alfc.lth=kog.mwu(adults.3dHeat.logFoldChange,gene2kog)
 alfc.lth
 # aposymbiotic coral larvae response to 5-day heat stress:
@@ -383,7 +382,7 @@ l.lth=kog.mwu(larvae.longTerm,gene2kog)
 l.lth
 
 # Load in additional data 
-load("ComparativeGEstudies/MetaAnalysisFiles.RData")
+load("MetaAnalysisFiles.RData")
 # adult response to 95-day heat stress:
 sid.lth=kog.mwu(Ssid.tempStatus,Ssid_gene2kog)
 sid.lth
@@ -424,7 +423,7 @@ edata=c(2:15) #only columns with expression data - host 2:15 ; sym 2:17
 dfull=read.csv("hostVSDandPVALS_no_g4_deseq1_4jun_plusPC1.csv") #expression data for full dataset (for sanity check)
 # hostVSDandPVALS_no_g4_deseq1_4jun.csv symVSDandPVALS_deseq1_4jun.csv
 
-term=subset(kog,V2=="Cell cycle control, cell division, chromosome partitioning") #write term of interest here from your sig list#
+term=subset(kog,V2=="Energy production and conversion") #write term of interest here from your sig list#
 is=rownames(term)
 #is<-pc1
 
