@@ -391,8 +391,13 @@ sid.lth
 aip.stat=kog.mwu(Aiptasia.symStatus,Aip_gene2kog)
 aip.stat
 
+# disease state in Ahyacinthus
+ahya.stat=kog.mwu(Ahya.diseaseStatus,Ahya_gene2kog)
+ahya.stat
+
 # compiling a table of delta-ranks to compare these results:
-ktable=makeDeltaRanksTable(list("Amil.adult.3d"=alfc.lth,"Amil.larvae.5d"=l.lth,"Ssid.adult.95d"=sid.lth,"Aip.sym.status"=aip.stat,"Plob.WPS"=host_kog_mwu))
+ktable=makeDeltaRanksTable(list("Amil.adult.3d"=alfc.lth,"Amil.larvae.5d"=l.lth,"Ssid.adult.95d"=sid.lth,"Aip.sym.status"=aip.stat,"Plob.WPS"=host_kog_mwu,"Ahya.WS"=ahya.stat))
+
 
 col=colorRampPalette(rev(brewer.pal(n = 7, name ="RdBu")),bias=0.75)(100)
 
