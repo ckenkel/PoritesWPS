@@ -428,9 +428,15 @@ edata=c(2:15) #only columns with expression data - host 2:15 ; sym 2:17
 dfull=read.csv("hostVSDandPVALS_no_g4_deseq1_4jun_plusPC1.csv") #expression data for full dataset (for sanity check)
 # hostVSDandPVALS_no_g4_deseq1_4jun.csv symVSDandPVALS_deseq1_4jun.csv
 
-term=subset(kog,V2=="Energy production and conversion") #write term of interest here from your sig list#
+term=subset(kog,V2=="Translation, ribosomal structure and biogenesis") #write term of interest here from your sig list#
 is=rownames(term)
 #is<-pc1
+
+############################################OR
+
+term=expr[expr$adjp.p<=0.1 & expr$direction==1,] #write term of interest here from your sig list#
+rownames(term)<-term$X
+is=rownames(term)
 
 #####################loop through genes matching term in vsd subset
 sel=c();gnms=c()
@@ -490,7 +496,7 @@ expc<-expc[,c(1,3,5,7,9,11,13,2,4,6,8,10,12,14)] #host
 library(RColorBrewer)
 library(pheatmap)
 
-col=color = colorRampPalette(rev(brewer.pal(n = 7, name ="RdBu")),bias=1.1)(30)
+col=color = colorRampPalette(rev(brewer.pal(n = 7, name ="RdBu")),bias=0.75)(30)
 #lower bias number gives more blues; higher bias gives more reds
 #mess with bias to get white at 0
 
@@ -498,5 +504,30 @@ col=color = colorRampPalette(rev(brewer.pal(n = 7, name ="RdBu")),bias=1.1)(30)
 #pdf("HeatmapPatchUp.pdf",width=8,height=17)
 pheatmap(expc,color=col,cluster_cols=F,clustering_distance_rows="correlation") #plot the heatmap
 #dev.off()
+
+
+########G-test for enrichment of putative immunity genes in expression subsets
+a=660 #genes with GO annotation in specified data subset
+b=733 #genes with GO annotation in entire dataset
+c=(14392-a) #genes without GO annotation in specified data subset
+f=(16665-b) #genes without GO annotation in entire dataset
+
+###create matrix and run test
+		sig=c(f,c) # number of genes in subset belonging and not belonging to the tested GO category
+		ns=c(b,a) # number of genes in global list belonging and not belonging to the tested GO category
+		mm=matrix(c(sig,ns),nrow=2,dimnames=list(ns=c("WholeTS","HighExpr"),sig=c("Nother","Nimmune")))
+		
+a=16 #genes with GO annotation in specified data subset
+b=660 #genes with GO annotation in entire dataset
+c=(576-a) #genes without GO annotation in specified data subset
+f=(14392-b) #genes without GO annotation in entire dataset
+
+###create matrix and run test
+		sig=c(f,c) # number of genes in subset belonging and not belonging to the tested GO category
+		ns=c(b,a) # number of genes in global list belonging and not belonging to the tested GO category
+		mm2=matrix(c(sig,ns),nrow=2,dimnames=list(ns=c("HighExpr","DEGs"),sig=c("Nother","Nimmune")))
+mm2
+		GTest(mm2,correct="none") #significantly different; in this case under-represented P=0.03 
+ff #should be a significant value for categorical KOG runs...
 
 
