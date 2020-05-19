@@ -19,7 +19,7 @@ library(plotrix)
 library(reshape2)
 library(factoextra)
 library(KOGMWU)
-
+library(DescTools)
 
 counts=read.table("AllCountsHost.txt",header=TRUE,row.names=1) #Reading in the table of counts per isogroup by sample - you must open R in the same folder or change the working directory
 
@@ -519,7 +519,7 @@ f=(16665-b) #genes without GO annotation in entire dataset
 		
 a=16 #genes with GO annotation in specified data subset
 b=660 #genes with GO annotation in entire dataset
-c=(576-a) #genes without GO annotation in specified data subset
+c=(393-a) #genes without GO annotation in specified data subset
 f=(14392-b) #genes without GO annotation in entire dataset
 
 ###create matrix and run test
