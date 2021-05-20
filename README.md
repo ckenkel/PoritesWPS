@@ -1,5 +1,5 @@
 # PoritesWPS
-Data for "Global gene expression patterns in Porites white patch syndrome: Disentangling symbiont loss from the thermal stress response in reef-building coral" https://onlinelibrary.wiley.com/doi/full/10.1111/mec.15608
+Data and code sufficient to recreate analyses from "Global gene expression patterns in Porites white patch syndrome: Disentangling symbiont loss from the thermal stress response in reef-building coral" https://onlinelibrary.wiley.com/doi/full/10.1111/mec.15608
 
 Files in this repository 
 -----------
